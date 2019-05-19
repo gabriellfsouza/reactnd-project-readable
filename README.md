@@ -14,6 +14,6 @@ To get started developing right away:
     - `npm install`
     - `node server`
 * Em outro terminal, instale e inicie a aplicação Web
-    - `cd reactnd-project-readable`
+    - `cd reactnd-projeto-leitura`
     - `npm install`
     - `npm start`
