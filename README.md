@@ -1,22 +1,19 @@
-# Readable API Server
+# Projeto Leitura - React DMND
 
-This is the starter project for the final assessment project for Udacity's Redux course where you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
+Este projeto faz parte do Nanodegree de React da Udacity. Ele trata a parte de utilização do Redux junto com o React.
+A aplicação permite o usuário ler e inserir novos posts e comentários, além de classificar positivamente e categorizar as postagens.
 
 This repository includes the code for the backend API Server that you'll use to develop and interact with the front-end portion of the project.
 
-## Start Developing
+## Inciando o projeto
 
 To get started developing right away:
 
-* Install and start the API server
+* Instale e inicie o servidor com a API desenvolvida para o projeto
     - `cd api-server`
     - `npm install`
     - `node server`
-* In another terminal window, use Create React App to scaffold out the front-end
-    - `create-react-app frontend`
-    - `cd frontend`
+* Em outro terminal, instale e inicie a aplicação Web
+    - `cd reactnd-project-readable`
+    - `npm install`
     - `npm start`
-
-## API Server
-
-Information about the API server and how to use it can be found in its [README file](api-server/README.md).
