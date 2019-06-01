@@ -30,6 +30,7 @@ class App extends Component {
                   <Switch>
                     <Route path='/' exact component={Root} />
                     <Route path='/new' exact component={EditPost} />
+                    <Route path='/path/:id' exact component={PostDetalhes} />
                     <Route path='/:category/:id' exact component={PostDetalhes} />
                     <Route path='/:category' exact component={Category} />
                   </Switch>
