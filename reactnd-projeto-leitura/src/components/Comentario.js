@@ -30,9 +30,9 @@ class Comentario extends Component{
 
     removeComment = (e)=>{
         e.preventDefault();
-        const {id,removeCommentDisp} = this.props;
+        const {id,removeCommentDisp,post} = this.props;
 
-        removeCommentDisp(id);
+        removeCommentDisp(id,post);
     }
 
     toParent = (e,id)=>{
@@ -99,10 +99,13 @@ class Comentario extends Component{
     }
 }
 
-function mapStateToProps({comments},props){
+function mapStateToProps({comments,posts},props){
     const {id} = props;
     const comment = objToArray(comments).find(comment=>comment.id === id) || {};
-    return {...props,comment};
+    const {parentId} = comment;
+    
+    const post = objToArray(posts).find(post=>parentId===post.id);
+    return {...props,comment,post};
 }
 
 function mapDispatchToProps(dispatch){
@@ -111,7 +114,7 @@ function mapDispatchToProps(dispatch){
             id,
             upVote
         })),
-        removeCommentDisp : (id) => dispatch(handleRemoveComment(id))
+        removeCommentDisp : (id,post) => dispatch(handleRemoveComment(id,post))
     };
 }
 

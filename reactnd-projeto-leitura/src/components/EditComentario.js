@@ -25,11 +25,11 @@ class EditComentario extends Component{
         
         const { body,author } = this.state;
 
-        const {dispatch,  editMode, comment,handleCompleteEdit,parentId} = this.props;
+        const {dispatch,  editMode, comment,handleCompleteEdit,parentId,post} = this.props;
         
         
         if(!editMode){
-            dispatch(handleAddComment({body,author,parentId}));
+            dispatch(handleAddComment({body,author,parentId},post));
         }else{
             dispatch(handleUpdateComment({...comment,body}))
             .then(handleCompleteEdit());
@@ -91,13 +91,14 @@ class EditComentario extends Component{
     }
 }
 
-function mapStateToProps({categories,comments},props){
+function mapStateToProps({categories,comments,posts},{parentId,...props}){
     const {id} = props;
+    const post = objToArray(posts).find(post=>parentId===post.id);
     if(id){
         const comment = objToArray(comments).find(comment=>comment.id===id);
-        return {...props,categories,comment}
+        return {...props,categories,comment,post}
     }else{
-        return {...props,categories}
+        return {...props,categories,post}
     }
 }
 

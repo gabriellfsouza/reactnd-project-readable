@@ -18,7 +18,7 @@ class Nav extends Component {
             categoriaSelecionada:category
         });
 
-        this.props.history.push((category !== 'tudo') ? `/categories/${category}` : '/');
+        this.props.history.push((category !== 'tudo') ? `/${category}` : '/');
         
     }
 

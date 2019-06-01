@@ -36,8 +36,9 @@ class Post extends Component {
     }
 
     toParent = (e,id)=>{
+        const {path} = this.props
         e.preventDefault();
-        this.props.history.push(`/post/${id}`);
+        this.props.history.push(`/${path}/${id}`);
     }
 
     handleEdit = (e)=>{
@@ -56,7 +57,7 @@ class Post extends Component {
 
 
     render(){
-        const {post} = this.props;
+        const {post,path} = this.props;
 
         const {editMode} = this.state;
 
@@ -67,7 +68,7 @@ class Post extends Component {
         const {id,timestamp,title,body,author,category,voteScore,commentCount} = post;
         return(
             <Fragment>
-                <Link to={`/post/${id}`} className='post' >
+                <Link to={`/${path}/${id}`} className='post' >
                 
                     <div className='post-info'>
                         <div>
@@ -111,11 +112,17 @@ class Post extends Component {
     }
 }
 
-function mapStateToProps({posts},{id}){
+function mapStateToProps({posts},{id,...props}){
     const post = objToArray(posts).find(post=>post.id===id);
     //talvez tenha a necessidade de incluir mais objetos aqui.
+    const {category} = props.match.params;
+    
+    //debugger;
 
-    return {post:post?post:null};
+    return {
+        post:post?post:null,
+        path:category?category:'path'
+    };
 }
 
 function mapDispatchToProps(dispatch){

@@ -8,6 +8,15 @@ import EditComentario from './EditComentario';
 import {objToArray} from '../utils/helpers';
 
 
+function NaoEncontrado(){
+    return(
+        
+            <div>
+              <h3>Post não encontrado</h3>
+            </div>
+    )
+}
+
 class PostDetalhes extends Component{
     state = {
         ordenacao:'data'
@@ -37,8 +46,8 @@ class PostDetalhes extends Component{
         const {id,commentCount} = post;
 
         const {ordenacao} = this.state;
-
-        return (
+        debugger;
+        return (post.id)?
             <div>
                 <div>Ordenação: </div>
                 <select value={ordenacao} onChange={this.handleChangeOrder}>
@@ -54,7 +63,8 @@ class PostDetalhes extends Component{
                     ))}
                 </ul>
             </div>
-        )
+            : <NaoEncontrado />
+        
     }
 }
 
